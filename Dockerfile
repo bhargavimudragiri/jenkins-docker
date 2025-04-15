@@ -1,14 +1,14 @@
-# Use CentOS 8 as the base image (you can also try centos:7 if this doesn't work)
+# Use CentOS 8 as the base image
 FROM centos:8
 
 # Maintainer information
 MAINTAINER vikashashoke@gmail.com
 
-# Install necessary dependencies and clean up yum cache
-RUN yum -y update && \
-    yum -y install epel-release && \
-    yum -y install httpd zip unzip && \
-    yum clean all
+# Update the system and install necessary dependencies using dnf
+RUN dnf -y update && \
+    dnf -y install epel-release && \
+    dnf -y install httpd zip unzip && \
+    dnf clean all
 
 # Add the remote zip file to the container
 ADD https://www.free-css.com/assets/files/free-css-templates/download/page254/photogenic.zip /var/www/html/
