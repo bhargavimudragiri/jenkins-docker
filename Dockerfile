@@ -1,11 +1,12 @@
-# Use CentOS 8 as the base image
-FROM centos:8
+# Use CentOS 8 Stream as the base image
+FROM centos:8-stream
 
-# Maintain the Dockerfile with the provided email
+# Maintainer information
 MAINTAINER vikashashoke@gmail.com
 
-# Install necessary packages (httpd, zip, unzip)
-RUN yum -y install httpd zip unzip && \
+# Install EPEL release and necessary packages (httpd, zip, unzip)
+RUN yum -y install epel-release && \
+    yum -y install httpd zip unzip && \
     yum clean all
 
 # Add the remote zip file to the container
